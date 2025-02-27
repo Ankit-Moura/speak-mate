@@ -107,7 +107,13 @@ function App() {
   }
 
   return (
+
     <div className="app-container">
+      <div className="warning">
+        🚨 Heads up! I'm a **solo dev** working on this **unpaid project** and honestly,  
+        I don't feel like writing a full mobile version. 😎  
+        Just **open this on a big screen**, and we're cool!  
+      </div>
       <h2  className="title">Hey, welcome to Speak Mate!</h2>
       <div className="head">
       
