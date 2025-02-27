@@ -18,3 +18,28 @@ export async function start(){
 export function endCall(){
     vapi.stop();
 }
+
+
+
+export async function getScore(callId) {
+  const url = `https://api.vapi.ai/call/${callId}`;
+  
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${import.meta.env.VITE_private_key}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error('Error fetching score:', err);
+    return null; // Return a default value in case of failure
+  }
+}
