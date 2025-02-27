@@ -23,7 +23,10 @@ export function endCall(){
 
 export async function getScore(callId) {
   const url = `https://api.vapi.ai/call/${callId}`;
-  
+  if (callId===null){
+    console.log("id is null");
+    return;
+  };
   try {
     const response = await fetch(url, {
       method: 'GET',
