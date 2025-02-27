@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { start, endCall, vapi, getScore } from "./ai";
 import ScoreCard from "./components/ScoreCard";
+import Loader from "./components/Loader";
+import Description from "./components/description";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -105,24 +107,41 @@ function App() {
   }
 
   return (
-    <>
-      <h2>Hey, welcome to Speak Mate!</h2>
-      <p>Status: {status}</p>
-      <button onClick={handleStartCall} disabled={status !== "Idle" && status !== "call-ended"}>
+    <div className="app-container">
+      <h2  className="title">Hey, welcome to Speak Mate!</h2>
+      <div className="head">
+      
+      
+      <button 
+        onClick={handleStartCall} 
+        disabled={status !== "Idle" && status !== "call-ended"} 
+        className="start-btn"
+      >
         Start Call
       </button>
-      <button onClick={handleEndCall} disabled={status === "Idle" || status === "call-ended"}>
+      <p className="status">{status}</p>
+      <button 
+        onClick={handleEndCall} 
+        disabled={status === "Idle" || status === "call-ended"} 
+        className="end-btn"
+      >
         End Call
       </button>
-      {loading && <h3>Grading your exam, hold up...</h3>}
-      {score && Object.keys(score).length !== 0 && <ScoreCard scores={score} />}
-      <div>
-        {messages.map((msgObj, i) => (
-          <p key={i}>{msgObj.sender}: {msgObj.text}</p>
-        ))}
       </div>
-    </>
+      {loading && <Loader/>}
+      {status==="call-ended" && score && Object.keys(score).length !== 0 &&<ScoreCard scores={score}/>}
+      {status==="Idle"?<Description/>:<div className="message-box">
+        {messages.map((msgObj, i) => (
+          <p key={i} className={`message ${msgObj.sender === "User" ? "user" : "assistant"}`}>
+            {msgObj.sender}: {msgObj.text}
+          </p>
+        ))}
+      
+        
+      </div>}      
+    </div>
   );
+
 }
 
 export default App;

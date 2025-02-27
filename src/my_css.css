@@ -1,36 +1,40 @@
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  body {
+}
+body{
+    background-color: #121212;
+}
+
+.app-container{
     background-color: #121212;
     color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;  
     padding: 20px;
-  }
-  
-  h2 {
+}
+
+.title{
+    text-align: center;
+    margin-top: 12vh;
+    margin-bottom: 40px;
     font-size: 2rem;
-    margin-bottom: 10px;
     color: #00d4ff;
+
     text-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6);
-  }
-  
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #bbbbbb;
-  }
-  
-  button {
+}
+
+.head{
+    height: fit-content;
+
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+}
+
+button {
     background: linear-gradient(135deg, #00d4ff, #008cff);
     border: none;
     color: white;
@@ -52,28 +56,31 @@
     transform: scale(1.05);
     box-shadow: 0px 0px 15px rgba(0, 212, 255, 0.6);
   }
-  
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px; /* Prevents content from growing too wide */
-    margin: 0 auto;
-}
 
-  .message-box {
+  .status{
+    text-align: center;
+    padding-top: 16px;
+    font-size: 26px;
+  }
+
+/* .head>*{
+    display: inline-block;
+} */
+
+
+.message-box {
+    display: block;
     height: 40vh;
-    width: 100%;
-    max-width: 500px; /* Prevents excessive width expansion */
+    margin: 20px 10vw;
+    max-width: 80vw;
     overflow-y: auto;
-    background: #9f9f9f;
+    background: #352d2d;
     padding: 10px;
     border-radius: 8px;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 24px;
   }
   
   /* Individual messages */
@@ -92,7 +99,7 @@
   }
   
   .message.assistant {
-    background-color: #e0e0e0;
+    background-color: #0f0d0d;
   }
   
   /* Auto-scroll effect */
@@ -105,9 +112,3 @@
     border-radius: 10px;
   }
   
-  
-  .loading-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    animation: fadeIn 1.5s infinite alternate;
-  }
